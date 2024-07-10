@@ -1,0 +1,45 @@
+{% extends 'eatapp/base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="container px-4">
+    <div class="row mt-5">
+        <div class="col-sm">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'betamain' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Login</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+<h2 class="text-center mb-5 mt-5">Hello! Let's get you logged in:</h2>
+<div class="d-flex justify-content-center">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% crispy form %}
+    </form>
+</div>
+<div class="text-center mt-5 alert alert-secondary">
+        <div class="mb-3">Need an account? <a href="{% url 'eatregister' %}">Register here</a>.</div>
+        <div>Or just use this test account - User: <strong><u>test</u></strong>, Password: <strong><u>testing12345</u></strong></div>
+</div>
+
+<script>
+    const togglePassword1 = document.querySelector('#togglePassword1');
+    const password1 = document.querySelector('#id_password');
+    
+    togglePassword1.addEventListener('click', () => {
+        // Toggle the type attribute using
+        // getAttribure() method
+        const type = password1
+            .getAttribute('type') === 'password' ?
+            'text' : 'password';
+        password1.setAttribute('type', type);
+        // Toggle the eye and bi-eye icon
+        togglePassword1.classList.toggle('bi-eye');
+    });
+</script>
+{% endblock %}

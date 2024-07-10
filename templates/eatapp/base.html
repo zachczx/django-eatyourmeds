@@ -1,0 +1,311 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time to eat your medicine</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+    {% load compress %}
+
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'theme.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+
+    <script src="{% static 'htmx.min.js' %}"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <style>
+
+        /* colour scheme - https://colorhunt.co/palette/a0c49dc4d7b2e1ecc8f7ffe5 */
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+/*        
+        .accordion-button:not(.collapsed) {
+            background-color: #EBF3E8;
+            box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+            border-bottom: 0.25em solid #B2C8BA;
+        }
+
+        .helptext {
+            font-size: 1em;
+            font-style: italic;
+            font-weight: normal;
+            color: green; 
+        }
+
+        input[type=text], input[type=password] {
+            border: 2px solid #B2C8BA;
+            border-radius: 5px;
+            padding: 5px;
+            width: 90%;
+        }
+
+        input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
+            background-color: #F7FFE5;
+        }
+
+        input[type=checkbox] {
+            height: 1.25em;
+            width: 1.25em;
+            accent-color: green;
+        }
+        
+        textarea {
+            border: 2px solid #B2C8BA;
+            border-radius: 5px;
+            padding: 5px;
+            width: 90%;
+            line-height: 1em;
+        }
+
+        select {
+            border: 2px solid #B2C8BA;
+            border-radius: 5px;
+            padding: 5px;
+            width: 90%;
+        }
+
+        label {
+            padding-top: 10px;
+        }
+        
+        #header {
+            text-decoration: none;
+        }
+*/
+        a, a:visited {
+
+            color: #6B856D;
+            text-decoration: none;
+            font-weight: bold;
+            /*text-decoration-thickness: 3px;
+            text-underline-offset: 5px; /* offset the issue with g being covered by line */
+            text-decoration-color: #6B856D;
+        }
+
+        a:hover {
+            color: #86A789;
+            text-decoration-thickness: 3px;
+            text-decoration-color: #86A789;
+        }
+
+        
+        a.link-no-line, a:visited.link-no-line {
+            text-decoration: none !important;
+            /* color: #ad2633; */
+            color: #212121;
+        }
+
+        a.link-no-line:hover {
+            text-decoration: none !important;
+            /* color: #dc3545; */
+        }
+
+        a.btn:hover { 
+            text-decoration: none !important;
+        }
+
+        /*
+        .list_action_icons {
+            text-align: center;
+            font-size: 120%;
+        }
+
+        .timeline_card-title {
+            text-decoration: underline;
+            text-decoration-thickness: 5px;
+            text-decoration-color: #86A789;
+            text-underline-offset: 4px;
+        }
+
+        .list_action_icons a:hover {
+            padding: 5px;
+            color: white;
+            background-color: #6B856D;
+            border-width: 5px;
+            border-style: solid;
+        }
+*/
+        .list_action_icons i {
+            margin-left: 0.75em;
+        }
+
+        .footer {
+            text-align: center;
+        }
+
+        .footer i {
+            font-size: 2em;
+        }
+
+        .badge.even-larger-badge {
+            font-size: 1.1em;
+        }
+
+        /* for the timeline 
+
+        .hori-timeline .events {
+            border-top: 3px solid #e9ecef;
+        }
+        .hori-timeline .events .event-list {
+            display: block;
+            position: relative;
+            text-align: center;
+            padding-top: 70px;
+            margin-right: 0;
+        }
+        .hori-timeline .events .event-list:before {
+            content: "";
+            position: absolute;
+            height: 36px;
+            border-right: 2px dashed #dee2e6;
+            top: 0;
+        }
+        .hori-timeline .events .event-list .event-date {
+            position: absolute;
+            top: 38px;
+            left: 0;
+            right: 0;
+            width: 75px;
+            margin: 0 auto;
+            border-radius: 4px;
+            padding: 2px 4px;
+        }
+        
+        @media (min-width: 1140px) {
+            .hori-timeline .events .event-list {
+                display: inline-block;
+                width: 24%;
+                padding-top: 45px;
+            }
+            .hori-timeline .events .event-list .event-date {
+                top: -12px;
+            }
+        }
+        .bg-soft-primary {
+            background-color: rgba(64,144,203,.3)!important;
+        }
+        .bg-soft-success {
+            background-color: rgba(71,189,154,.3)!important;
+        }
+        .bg-soft-danger {
+            background-color: rgba(231,76,94,.3)!important;
+        }
+        .bg-soft-warning {
+            background-color: rgba(249,213,112,.3)!important;
+        }
+        .bg-soft-secondary {
+            background-color: #d5e1eb!important;
+        }
+        .timeline_card {
+            border: none;
+            margin-bottom: 24px;
+            -webkit-box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+            box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
+        }
+        end timeline */
+
+        /* table */
+        .calendar {
+            width: 98%;
+            margin: auto;
+            font-size: 13px;
+        }
+          
+        .calendar th {
+            background-color: #fafbf4;
+            padding: 0.5em;
+            text-align: center;
+            font-size: 1.25em;
+        }
+          
+        .calendar td {
+            width: 14.28%;
+            height: 10em;
+            padding: 20px 0px 0px 5px;
+            font-size: 1em;
+        }
+
+    </style>
+</head>
+<body 
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    class="bg-warning">
+<main>
+<div class="container shadow mb-5 pb-5 bg-white rounded">
+    <div class="row">
+        <a href="{% url 'betamain' %}" id="header">
+            <div class="col p3 mb-2 text-center">
+                <div class="jumbotron jumbotron-fluid">
+                    <img src="{% static 'logo.webp' %}" class="img-fluid rounded-circle" height="300" width="300">
+                    <p><span class="lead border-bottom border-success border-5">I'll tell you when to eat your medicine. No forgetting.</span></p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="row mb-3">
+        {% if user.is_authenticated %}
+            <div class="col-12 col-lg-2"></div>
+            <div class="col-12 col-lg-8 text-center">
+                <span class="dropdown">
+                    <button class="btn btn-primary rounded-circle border border-light position-relative" type="button" id="notifbutton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bi bi-bell-fill fs-6 text-white"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{notif_count}}<span class="visually-hidden">upcoming doses</span></span>
+                    </button>
+                    {% if notif %}
+                    <ol class="dropdown-menu list-group-numbered" aria-labelledby="notifbutton">
+                        <li class="dropdown-header text-dark fw-bold">Doses today - {{notif.0.dose_timing|date:'d M (D)'}}</li>
+                        {% for dose in notif %}
+                        {% if dose.dose_timing < datetoday %}
+                        <li class="dropdown-item opacity-50 list-group-item px-3 border-top" href="#">{{dose.dose_timing|time:'g:i a'}} <i class="bi bi-chevron-right"></i> {{dose.courseinfo.medicine}}</li>   
+                        {% else %}
+                        <li class="dropdown-item list-group-item px-3 border-top" href="#">{{dose.dose_timing|time:'g:i a'}} <i class="bi bi-chevron-right"></i> {{dose.courseinfo.medicine}}</li>   
+                        {% endif %}
+                        {% endfor %}
+                    </ol>
+                    {% else %}
+                    <span class="dropdown-menu px-2 text-center">Nothing's here!</span>
+                    {% endif %}
+                </span>
+            </div>
+            <div class="col-12 col-lg-2 text-center">
+                <div class="dropdown">
+                <button class="btn btn-link text-decoration-none text-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person-circle fs-3"></i>&nbsp;&nbsp;&nbsp;<b>{{user.username}}</b>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'betapatientupdate' %}"><button class="dropdown-item" type="button">Profile</button></a></li>
+                    <li><a href="{% url 'eatlogout' %}"><button class="dropdown-item" type="button">Logout</button></a></li>
+                </ul>
+              </div>
+            </div>
+        {% endif %}
+    </div>
+
+        {% block content %}
+        {% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>        
+
+</main>
+{% include "eatapp/partials/_footer.html" %}
+
+</div>
+<!--<script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    const popover = new bootstrap.Popover('.popover-dismiss', {
+        trigger: 'focus'
+      })
+</script>-->
+</body>
+</html>

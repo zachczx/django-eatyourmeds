@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-compressor = "*"
+libsass = "*"
+psycopg2 = "*"
+python-dotenv = "*"
+redis = "*"
+django-redis = "*"
+gunicorn = "*"
+whitenoise = "*"
+crispy-bootstrap5 = "*"
+django-crispy-forms = "*"
+django-debug-toolbar = "*"
+django-environ = "*"
+djlint = "*"
+django-libsass = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
+python_full_version = "3.12.4"

@@ -1,0 +1,15 @@
+*.env
+*.pyc
+old/
+templates/test.html
+templates/JStest.html
+staticfiles/
+*.sqlite3
+data.json
+eatyourmeds/.gitattributes
+eatyourmeds/.gitignore
+migrations/
+aboutme/migrations/
+rankingapp/migrations/
+CACHE/
+*.old
