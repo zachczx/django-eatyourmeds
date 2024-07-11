@@ -36,6 +36,7 @@ ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=[str])
 # Application definition
 
 INSTALLED_APPS = [
+    # "unfold", 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'compressor',
     'crispy_forms',
     "crispy_bootstrap5",
+    #'import_export',
 ]
 
 MIDDLEWARE = [

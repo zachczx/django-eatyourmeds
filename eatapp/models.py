@@ -14,6 +14,28 @@ medicine_choices = [
     ('Ivy Leaf Extract', 'Ivy Leaf Extract'),
 ]
 
+# rec_interval, description, used for, sideeffects, brandname
+# medicine_info = (
+#     "Cetirizine", [4, 
+#                    "Cetirizine is an antihistamine used to relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching. It works by blocking a certain natural substance (histamine) that your body makes during an allergic reaction. Cetirizine does not prevent hives or prevent/treat a serious allergic reaction (such as anaphylaxis).",
+#                    "relieve allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching.",
+#                    "Allergy symptoms such as watery eyes, runny nose, itching eyes/nose, sneezing, hives, and itching",	"Drowsiness, tiredness, and dry mouth may occur. Stomach pain may also occur, especially in children. If any of these effects last or get worse, tell your doctor or pharmacist promptly",	
+#                    "Zyrtec"],
+#     "Paracetamol", [6,
+#                     "Paracetamol is an analgesic and antipyretic drug that is used to temporarily relieve mild-to-moderate pain and fever. It is commonly included as an ingredient in cold and flu medications and is also used on its own.",
+#                     "Mild to moderate pain (from headaches, menstrual periods, toothaches, backaches, osteoarthritis, or cold/flu aches and pains) and to reduce fever.",
+#                     "Usually has no side effects.",
+#                     "Panadol"],
+#     "Promethazine", [6,
+#                     "Promethazine is an antihistamine and works by blocking a certain natural substance (histamine) that your body makes during an allergic reaction. Its other effects (such as anti-nausea, calming, pain relief) may work by affecting other natural substances (such as acetylcholine) and by acting directly on certain parts of the brain.",
+#                     "Prevent and treat nausea and vomiting related to certain conditions (such as before/after surgery, motion sickness). It is also used to treat allergy symptoms such as rash, itching, and runny nose.",	
+#                     "Drowsiness, dizziness, constipation, blurred vision, or dry mouth may occur. If any of these effects last or get worse, tell your doctor.",
+#                     "Promethazine"],
+#     "Ivy Leaf Extract", [8,
+#                     "Ivy Leaf extract might improve lung function in people with breathing difficulty. English ivy might also have antioxidant effects.	Ivy Leaf extract might help thin mucus in the airways.",	
+#                     "Nausea, vomiting and diarrhea",	
+#                     "Prospan, Abrilar"],
+# )
 
 class MedicalInfo(models.Model):
     medicine = models.CharField(max_length=50, choices=medicine_choices)

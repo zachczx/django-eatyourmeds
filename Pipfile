@@ -19,6 +19,8 @@ django-debug-toolbar = "*"
 django-environ = "*"
 djlint = "*"
 django-libsass = "*"
+django-unfold = "*"
+django-import-export = "*"
 
 [dev-packages]
 
